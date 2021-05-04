@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const clienteController = require("../controllers/clienteController");
+const productoController = require("../controllers/productoController");
 
 module.exports = function() {
     //agrega nuevos clientes via POST
