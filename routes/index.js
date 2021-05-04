@@ -6,5 +6,7 @@ module.exports = function() {
     //agrega nuevos clientes via POST
     router.post("/clientes", clienteController.nuevoCliente);
 
+    //obtener todos los clientes
+    router.get("/clientes", clienteController.mostrarClientes);
     return router;
 }
