@@ -39,3 +39,26 @@ exports.mostrarPedido = async (req, res, next) => {
         next();
     }
 }
+
+exports.actualizarPedido = async (req, res, next) => {
+    try {
+        const pedido = await Pedidos.findOneAndUpdate(
+            {
+                _id: req.params.idPedido
+            }, 
+            req.body,
+            {
+                new: true
+            }
+        ).populate("cliente").populate({
+            path: "pedido.producto",
+            model: "Productos"
+        });
+        res.json(pedido);
+    } catch (error) {
+        res.json({
+            mensaje: "Ese pedido no existe"
+        });
+        next();
+    }
+}
