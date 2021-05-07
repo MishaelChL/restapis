@@ -2,6 +2,9 @@ const express = require("express");
 const routes = require("./routes")
 const mongoose = require("mongoose");
 
+//importar cors, permite  que un cliente pueda conectarse para el intercambio de recursos
+const cors = require("cors");
+
 //conectar mongo
 mongoose.Promise = global.Promise;
 const url = "mongodb://localhost:27017/restapi";
@@ -28,8 +31,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+//habilitar cors
+app.use(cors());
+
 //rutas de la app
 app.use("/", routes());
 
 //puerto
-app.listen(3000);
+app.listen(5000);
