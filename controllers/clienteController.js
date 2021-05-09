@@ -55,9 +55,7 @@ exports.actualizarCliente = async (req, res, next) => {
         );
         res.json(cliente);
     } catch (error) {
-        res.json({
-            mensaje: "Ese cliente no existe"
-        });
+        res.send(error);
         next();
     }
 }
